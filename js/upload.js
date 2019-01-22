@@ -4,9 +4,8 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 		var languages = utui.data.privacy_management.preferences.languages,
 			// fetch CSV data arr
 			data = tealiumTools.input.csv_upload.split(/\s/), 
-			// define expected header values --- change THESE if the headers in the UI change
-			actual_headers = ['language','title','category','confirmation_button','description','message','no','status','yes'],
-			actual_headers = {
+			// define expected header values --- change THESE if the headers in the UI change,
+			actual_header_map = {
 				'language':'Language',	
 				'title':'Title',	
 				'category':'Category',	
@@ -23,7 +22,7 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 			// method to convert array data to JSON data
 			toObj = function(data){
 			  var obj = {};
-			  for(i in Object.keys(actual_headers)){obj[Object.keys(actual_headers)[i]] = data[i];}
+			  for(i in Object.keys(actual_header_map)){obj[Object.keys(actual_header_map)[i]] = data[i];}
 			  return obj;
 			}, 
 			// method to validate input headers
@@ -43,7 +42,7 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 		var input_headers = data.splice(0,9);
 
 		// check that headers are valid
-		if(!validHeaders(input_headers, actual_headers)){
+		if(!validHeaders(input_headers, actual_header_map)){
 			tealiumTools.sendError('Error','Please ensure that your first row contains all the expected header values.')
 			return;
 		}
