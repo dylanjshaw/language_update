@@ -52,11 +52,9 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 		    languages[json_data[j].language].common_tokens = json_data[j];
 		}
 
-		console.log('THIS SHIT WORKS');
+		alert('Good news! It worked.')
 		
 	})()
 } else {
 	alert('Please paste some CSV data into the textbox.');
 }
-
-
