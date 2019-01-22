@@ -5,7 +5,7 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 	alert('Please select a file from your machine.');
 }
 
-var languages = utui.data.privacy_management.preferences.languages;
+var languages = utui.data.privacy_management.preferences.languages,
 	data = tealiumTools.input.csv_upload.split(/\s/), 
 	chunk, 
 	rows = [],
