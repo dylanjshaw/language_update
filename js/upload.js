@@ -1,4 +1,3 @@
-
 if (tealiumTools.input && tealiumTools.input.csv_upload) {
 	(function(){
 		// fetch current language prefs
@@ -27,14 +26,14 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 				}
 				return input.length == actual.length && sameElements;
 			}, 
-			all_languages_exist = true; 
+			undefined_languages = []; 
 
 		// parse headers out of data arr
 		var input_headers = data.splice(0,9);
 
 		// check that headers are valid
 		if(!validHeaders(input_headers, actual_headers)){
-			alert('Please ensure that your first row contains all the expected header values.')
+			tealiumTools.sendError('Error','Please ensure that your first row contains all the expected header values.')
 			return;
 		}
 
@@ -52,17 +51,16 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 			if(languages[json_data[j].language]){
 		    	languages[json_data[j].language].common_tokens = json_data[j];
 			} else {
-				all_languages_exist = false;
+				undefined_languages.push(json_data[j].language);
 			}
 		}
 
-		if(all_languages_exist){
-			alert('Good news! Everything worked.')	
+		if(!undefined_languages.length){
+			tealiumTools.sendMessage('Success', 'Good news! Everything worked.');
 		} else {
-			alert('At least one of the languages you entered has not been defined in TiQ. Please make sure each language is added before making changes to it using the tool.')
+			tealiumTools.sendError('Error', 'The following languages were not updated because they were not previously defined in TiQ: ' + undefined_languages.toString());
 		}
-		
 	})()
 } else {
-	alert('Please paste some CSV data into the textbox.');
+	tealiumTools.sendError('Error', 'Please paste some CSV data into the textbox.');
 }
