@@ -26,7 +26,8 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 					}
 				}
 				return input.length == actual.length && sameElements;
-			}; 
+			}, 
+			all_languages_exist = true; 
 
 		// parse headers out of data arr
 		var input_headers = data.splice(0,9);
@@ -46,13 +47,20 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 		// convert rows to JSON data
 		json_data = rows.map(function(row){return toObj(row);})
 
-
 		// overwrite language prefs with new data
 		for(j in json_data){
-		    languages[json_data[j].language].common_tokens = json_data[j];
+			if(languages[json_data[j].language]){
+		    	languages[json_data[j].language].common_tokens = json_data[j];
+			} else {
+				all_languages_exist = false;
+			}
 		}
 
-		alert('Good news! It worked.')
+		if(all_languages_exist){
+			alert('Good news! Everything worked.')	
+		} else {
+			alert('At least one of the languages you entered has not been defined in TiQ. Please make sure each language is added before making changes to it using the tool.')
+		}
 		
 	})()
 } else {
