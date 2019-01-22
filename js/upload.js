@@ -6,13 +6,24 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 			data = tealiumTools.input.csv_upload.split(/\s/), 
 			// define expected header values --- change THESE if the headers in the UI change
 			actual_headers = ['language','title','category','confirmation_button','description','message','no','status','yes'],
+			actual_headers = {
+				'language':'Language',	
+				'title':'Title',	
+				'category':'Category',	
+				'confirmation_button':'Confirmation Button',	
+				'description':'Description',	
+				'message':'Message',	
+				'no':'No',	
+				'status':'Status',
+				'yes':'Yes'
+			},
 			chunk, 
 			rows = [],
 			i, j,
 			// method to convert array data to JSON data
 			toObj = function(data){
 			  var obj = {};
-			  for(i in input_headers){obj[input_headers[i]] = data[i];}
+			  for(i in Object.keys(actual_headers)){obj[Object.keys(actual_headers)[i]] = data[i];}
 			  return obj;
 			}, 
 			// method to validate input headers
