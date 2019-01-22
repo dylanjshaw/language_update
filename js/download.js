@@ -52,7 +52,6 @@
             return str;
         },
         exportCSVFile = function(headers, items, fileTitle) {
-            debugger;
             var csv = convertToCSV(headers, items);
             var exportedFileName = fileTitle + '-' + getDate() + '.csv' || 'export.csv';
             var blob = new Blob([csv], {
