@@ -34,12 +34,21 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 						break;
 					}
 				}
-				return input.length == actual.length && sameElements;
+				return input.length == Object.keys(actual).length && sameElements;
 			}, 
 			undefined_languages = []; 
 
 		// parse headers out of data arr
-		var input_headers = data.splice(0,9);
+		var input_headers = data.splice(0,10);
+
+		// process confirmation button header
+		var confirmation_index = input_headers.indexOf('Confirmation');
+		if(confirmation_index > -1){
+			if(input_headers[confirmation_index+1] === "Button"){
+				input_headers.splice(confirmation_index, 2);
+				input_headers.push('Confirmation Button')
+			}
+		}
 
 		// check that headers are valid
 		if(!validHeaders(input_headers, actual_header_map)){
