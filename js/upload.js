@@ -50,7 +50,6 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 
             // parse headers out of data arr
             var input_headers = data.splice(0, 10)
-            debugger;
 
             // process confirmation button header
             var confirmation_index = input_headers.indexOf('Confirmation');
