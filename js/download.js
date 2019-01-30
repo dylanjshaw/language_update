@@ -58,7 +58,8 @@
                         if (line != '') {
                             line += ',';
                         }
-                        line += (objArray[i][Object.keys(headers)[j]] ? JSON.stringify(objArray[i][Object.keys(headers)[j]]) : '');
+                        line += objArray[i][Object.keys(headers)[j]];
+                        // line += (objArray[i][Object.keys(headers)[j]] ? JSON.stringify(objArray[i][Object.keys(headers)[j]]) : '');
                     }
                     str += line + '\r\n';
                 }
