@@ -7,7 +7,7 @@
             "input" : {
                 "csv_upload" : {
                     "type" : "text",
-                    "label" : "Paste CSV Here"
+                    "label" : "Paste CSV here. Must include header row and each subsequent row's cells should be wrapped in double quotes."
                 }
             },
             "button_label" : "Upload Languages",
