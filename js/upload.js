@@ -1,65 +1,68 @@
 if (tealiumTools.input && tealiumTools.input.csv_upload) {
-	debugger;
     (function() {
         try {
-            // fetch current language prefs
-        	var preferences = utui.data.privacy_management.preferences, languages; 
-            if(preferences){
-            	languages = preferences.languages;
-            } else {
-				tealiumTools.sendError('Error', 'The following languages were not updated because they were not previously defined in TiQ: ' + undefined_languages.toString());
-            }
-                // define expected header values --- change THESE if the headers in the UI change,
-                actual_header_map = {
-                    'language': 'Language',
-                    'title': 'Title',
-                    'category': 'Category',
-                    'confirmation_button': 'Confirmation Button',
-                    'description': 'Description',
-                    'message': 'Message',
-                    'no': 'No',
-                    'status': 'Status',
-                    'yes': 'Yes'
-                },
-                chunk,
-                rows = [],
-                i, j,
-                // method to convert array data to JSON data
-                toObj = function(data) {
-                    var obj = {};
-                    for (i in Object.keys(actual_header_map)) {
-                        obj[Object.keys(actual_header_map)[i]] = data[i];
+    		var preferences = utui.data.privacy_management.preferences, languages,
+            // define expected header values --- change THESE if the headers in the UI change,
+            actual_header_map = {
+                'language': 'Language',
+                'title': 'Title',
+                'category': 'Category',
+                'confirmation_button': 'Confirmation Button',
+                'description': 'Description',
+                'message': 'Message',
+                'no': 'No',
+                'status': 'Status',
+                'yes': 'Yes'
+            },
+            chunk,
+            rows = [],
+            i, j,
+            // method to convert array data to JSON data
+            toObj = function(data) {
+                var obj = {};
+                for (i in Object.keys(actual_header_map)) {
+                    obj[Object.keys(actual_header_map)[i]] = data[i];
+                }
+                return obj;
+            },
+            // method to validate input headers
+            validHeaders = function(input, actual) {
+                var actual = actual,
+                    i, sameElements = true;
+                for (i in actual) {
+                    if (!input.includes(actual[i])) {
+                        sameElements = false;
+                        break;
                     }
-                    return obj;
-                },
-                // method to validate input headers
-                validHeaders = function(input, actual) {
-                    var actual = actual,
-                        i, sameElements = true;
-                    for (i in actual) {
-                        if (!input.includes(actual[i])) {
-                            sameElements = false;
-                            break;
-                        }
-                    }
-                    return input.length == Object.keys(actual).length && sameElements;
-                },
-                removeWhiteSpaces = function(arr) {
-                    return arr.filter(function(str) {
-                        return str.replace(/\s/g, '')
-                    })
-                },
-                undefined_languages = [];
+                }
+                return input.length == Object.keys(actual).length && sameElements;
+            },
+            removeWhiteSpaces = function(arr) {
+                return arr.filter(function(str) {
+                    return str.replace(/\s/g, '')
+                })
+            },
+            undefined_languages = [];
 
 
 
             debugger;
 
-            // fetch CSV data arr
-            data = removeWhiteSpaces(tealiumTools.input.csv_upload.split(/\s/))
 
+            // fetch current language prefs
+            if(preferences){
+            	languages = preferences.languages;
+            } else {
+				tealiumTools.sendError('Error', 'The following languages were not updated because they were not previously defined in TiQ: ' + undefined_languages.toString());
+            }
+
+            // fetch CSV data arr
+            data = removeWhiteSpaces(tealiumTools.input.csv_upload.split('"'))
+
+            
             // parse headers out of data arr
-            var input_headers = data.splice(0, 10)
+            var input_headers = data.splice(0,1)[0];
+            input_headers = removeWhiteSpaces(input_headers.split(/\s/));
 
 
             // process confirmation button header
@@ -67,7 +70,7 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
             if (confirmation_index > -1) {
                 if (input_headers[confirmation_index + 1] === "Button") {
                     input_headers.splice(confirmation_index, 2);
-                    input_headers.push('Confirmation Button')
+                    input_headers.push('Confirmation Button');
                 }
             }
 
