@@ -1,8 +1,14 @@
 if (tealiumTools.input && tealiumTools.input.csv_upload) {
+	debugger;
     (function() {
         try {
             // fetch current language prefs
-            var languages = utui.data.privacy_management.preferences.languages,
+        	var preferences = utui.data.privacy_management.preferences, languages; 
+            if(preferences){
+            	languages = preferences.languages;
+            } else {
+				tealiumTools.sendError('Error', 'The following languages were not updated because they were not previously defined in TiQ: ' + undefined_languages.toString());
+            }
                 // define expected header values --- change THESE if the headers in the UI change,
                 actual_header_map = {
                     'language': 'Language',
@@ -45,11 +51,16 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
                 },
                 undefined_languages = [];
 
+
+
+            debugger;
+
             // fetch CSV data arr
             data = removeWhiteSpaces(tealiumTools.input.csv_upload.split(/\s/))
 
             // parse headers out of data arr
             var input_headers = data.splice(0, 10)
+
 
             // process confirmation button header
             var confirmation_index = input_headers.indexOf('Confirmation');
