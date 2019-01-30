@@ -45,10 +45,6 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
             undefined_languages = [];
 
 
-
-            debugger;
-
-
             // fetch current language prefs
             if(preferences){
             	languages = preferences.languages;
@@ -56,6 +52,9 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
 				tealiumTools.sendError('Error', 'The following languages were not updated because they were not previously defined in TiQ: ' + undefined_languages.toString());
             }
 
+
+            debugger;
+            
             // fetch CSV data arr
             data = removeWhiteSpaces(tealiumTools.input.csv_upload.split('"'))
 
