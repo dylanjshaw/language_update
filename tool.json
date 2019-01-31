@@ -12,13 +12,13 @@
             },
             "button_label" : "Upload Languages",
             "remote_js" : "true",
-            "js" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.1.8/js/upload.js"
+            "js" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.1.9/js/upload.js"
         },
         "download" : {
             "title" : "Download Languages",
             "button_label" : "Download Languages",
             "remote_js" : "true",
-            "js" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.1.8/js/download.js"
+            "js" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.1.9/js/download.js"
         }
     }
 }

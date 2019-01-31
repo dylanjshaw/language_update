@@ -42,6 +42,7 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
                     return str.replace(/\s/g, '')
                 })
             },
+            create = function(e){return{categories:{analytics:{name:"",notes:""},affiliates:{name:"",notes:""},display_ads:{name:"",notes:""},search:{name:"",notes:""},email:{name:"",notes:""},personalization:{name:"",notes:""},social:{name:"",notes:""},big_data:{name:"",notes:""},misc:{name:"",notes:""},cookiematch:{name:"",notes:""},cdp:{name:"",notes:""},mobile:{name:"",notes:""},engagement:{name:"",notes:""},monitoring:{name:"",notes:""},crm:{name:"",notes:""}},common_tokens:e,custom_tokens:{company_logo_url:"",privacy_policy_url:""},isDefault:!1}},
             undefined_languages = [];
 
 
@@ -49,7 +50,7 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
             if(preferences){
             	languages = preferences.languages;
             } else {
-				tealiumTools.sendError('Error', 'The following languages were not updated because they were not previously defined in TiQ: ' + undefined_languages.toString());
+				tealiumTools.sendError('Error', 'Please set up a default language preference manually before adding more language preferences using the tool.');
             }
 
             // fetch CSV data arr
@@ -92,15 +93,16 @@ if (tealiumTools.input && tealiumTools.input.csv_upload) {
                 if (languages[json_data[j].language]) {
                     languages[json_data[j].language].common_tokens = json_data[j];
                 } else {
-                    undefined_languages.push(json_data[j].language);
+                    // undefined_languages.push(json_data[j].language);
+                    languages[json_data[j].language] = create(json_data[j]);
                 }
             }
-
-            if (!undefined_languages.length) {
+            
+            // if (!undefined_languages.length) {
                 tealiumTools.sendMessage('Success', 'Good news! Everything worked.');
-            } else {
-                tealiumTools.sendError('Error', 'The following languages were not updated because they were not previously defined in TiQ: ' + undefined_languages.toString());
-            }
+            // } else {
+                // tealiumTools.sendError('Error', 'The following languages were not updated because they were not previously defined in TiQ: ' + undefined_languages.toString());
+            // }
         } catch (e) {
             tealiumTools.sendError('Error', 'An unexpected error occurred. Please report this issue to Tealium Support.')
         }
