@@ -4,10 +4,9 @@
     "scripts": {
         "upload" : {
             "title": "Upload Languages",
-            "button_label" : "Upload Languages",
-            "remote_js" : "true",
+            "remote_js" : true,
             "js" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.1.9/js/upload.js",
-            "remote_template" : "true",
+            "remote_template" : true,
             "template" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.2.0/language.html"
         },
         "download" : {
@@ -18,9 +17,3 @@
         }
     }
 }
-
-
-
-
-
-
