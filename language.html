@@ -1,0 +1,266 @@
+<script type="text/x-handlebars">
+    <style type="text/css"></style> <!--LEFT EMPTY SO THE NEXT STYLE TAG IS SEEN BY THE IDE ˉ\_(‟⁄)_/ˉ-->
+    <style type="text/css">
+        .tab-content {
+            margin-bottom: 0px
+        }
+
+        .ovfl {
+            overflow: auto
+        }
+
+        #tealiumTC ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px
+        }
+
+        #tealiumTC ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3)
+        }
+
+        #tealiumTC ::-webkit-scrollbar-thumb {
+            background: #398dd4;
+            -webkit-box-shadow: inset 0 0 2px #000
+        }
+
+        #tealiumTC ::-webkit-scrollbar-thumb:window-inactive {
+            background: #7eacd3
+        }
+
+        #udo_code_tag.tc-ul-code.ovfl,
+        #udo_code_loadrule.tc-ul-code.ovfl,
+        #udo_code_extension.tc-ul-code.ovfl {
+            font: 400 12px/1.2em Arial, sans-serif
+        }
+
+        #tealiumTC .tc-ul-code {
+            background: #fff;
+            width: 100%;
+            height: 335px;
+            font-family: "Courier New", Courier, serif;
+            /*white-space: pre*/
+        }
+
+        #tealiumTC .tc-ul-code strong {
+            font-family: "Courier New", Courier, serif;
+            font-weight: 700;
+            display: inline-block;
+            background: #dfe4e9;
+            border-radius: 4px;
+            padding: 1px 4px;
+            margin-bottom: 1px
+        }
+
+        #tealiumTC {
+            -webkit-touch-callout: none;
+            -webkit-user-select: text;
+            -khtml-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+
+            background: 0;
+            border: 0;
+            box-shadow: none;
+            clear: none;
+            color: #1f1f1f;
+            float: none;
+            font: 400 12px/1.2em Arial, sans-serif;
+            height: auto;
+            width: auto;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 0;
+            text-shadow: none;
+            text-decoration: none;
+            cursor: auto;
+            letter-spacing: 0;
+            word-spacing: 0;
+            text-transform: none;
+            text-align: left;
+            text-indent: 0;
+            overflow: auto;
+            box-sizing: border-box;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+
+            /*text-decoration: none;*/
+            /*width: auto;*/
+            /*height: auto;*/
+            /*padding: 0;*/
+            /*margin: 0;*/
+            /*box-shadow: none;*/
+            /*border: 0;*/
+            outline: 0;
+            /*position: fixed;*/
+            top: 0;
+            left: 0;
+            font-size: 100%;
+            /*z-index: 2147483610;*/
+        }
+
+        #tealiumTC .tc-panel-content {
+            font-size: 12px;
+            padding: 6px 8px;
+            background: #ccc
+        }
+
+        #tealiumTC .tc-panel-content p {
+            font-size: 12px;
+            color: #000;
+            margin-bottom: 4px;
+            overflow: hidden
+        }
+
+        #tealiumTC .tc-box-table {
+            margin: 0;
+            font-size: 12px;
+            box-shadow: 0 1px 4px #999
+        }
+
+        #tealiumTC .tc-box-table .tc-box-row-bar {
+            background: #e9e9e9;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 4px
+        }
+
+        #tealiumTC .tc-box-table .tc-box-row-bar .tc-bar-title {
+            text-transform: uppercase;
+            color: #666;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-box-table .tc-box-row-bar .tc-bar-title {
+            text-transform: uppercase;
+            color: #666;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-col-span2 {
+            width: 16%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-col-span4 {
+            width: 20%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-col-span8 {
+            width: 60%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-box-table .tc-box-row {
+            font-size: 12px;
+            padding: 4px;
+            word-break: break-all;
+            background: #fff;
+            border-bottom: 1px solid #eee
+        }
+
+        #tealiumTC .tc-box-table .tc-box-row:hover {
+            cursor: pointer;
+            background-color: #eee;
+        }
+
+        #tealiumTC .tc-overview-status {
+            text-align: center;
+            color: #609d42;
+            font-size: 11px
+        }
+
+        #udo_code_tag,
+        #udo_code_loadrule,
+        #udo_code_extension    {
+            font: 400 12px/1.2em Arial, sans-serif
+        }
+
+        #tealiumTC .tc-col-span18 {
+            width: 18%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-col-span32 {
+            width: 32%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-col-span67 {
+            width: 67%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-col-span18 {
+            width: 18%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-col-span20 {
+            width: 20%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #tealiumTC .tc-col-span60 {
+            width: 60%;
+            display: inline-block;
+            text-align: center;
+            font-size: 11px
+        }
+
+        #overview_console {
+            background-repeat: no-repeat;
+            background-position: top right;
+            font-size: 12px;
+            padding: 4px 10px;
+        }
+
+        .tc-console-row {
+            margin: 4px 0;
+        }
+
+        .tc-console-row > .tc-label {
+            font-size: 12px;
+            font-weight: normal;
+            float: left;
+            min-width: 76px;
+            padding-right: 12px;
+            text-transform: uppercase;
+        }
+
+        .tc-label {
+            font-size: 14px;
+            font-weight: normal;
+            float: left;
+            min-width: 55px;
+            padding-right: 4px;
+        }
+
+        .tc-console-row > .tc-label-value {}
+    </style>
+    <br>
+    <div>
+      <label class="csv-label" for="csv">CSV:</label>
+      <div class="csv-container">          
+        <textarea id="csv" name="csv" cols="36" rows="5"></textarea>          
+      </div>
+    </div>
+    <p style="margin: 0 0 0;">Comments / bugs / feature requests? Send them to <a href="mailto:dylan.shaw@tealium.com">dylan.shaw@tealium.com</a></p>
+</script>   

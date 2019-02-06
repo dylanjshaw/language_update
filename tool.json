@@ -1,18 +1,14 @@
 {
     "id" : "consent_dialog_language_update",
-    "title": "Consent Dialog Language Update",
+    "title": "Language Updater 3000",
     "scripts": {
         "upload" : {
             "title": "Upload Languages",
-            "input" : {
-                "csv_upload" : {
-                    "type" : "text",
-                    "label" : "Paste CSV here. Must include header row and each subsequent row's cells should be wrapped in double quotes."
-                }
-            },
             "button_label" : "Upload Languages",
             "remote_js" : "true",
-            "js" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.1.9/js/upload.js"
+            "js" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.1.9/js/upload.js",
+            "remote_template" : "true",
+            "template" : "https://cdn.jsdelivr.net/gh/dylanjshaw/language_update@0.2.0/language.html"
         },
         "download" : {
             "title" : "Download Languages",
@@ -22,3 +18,9 @@
         }
     }
 }
+
+
+
+
+
+
